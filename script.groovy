@@ -9,6 +9,7 @@ def buildImage() {
         sh 'docker build -t ilumiles/my-repo-app:a-1.0 .'
         sh "echo $PASS | docker login -u $USER --password-stdin "
         sh 'docker push ilumiles/my-repo-app:a-1.0'
+    }
 } 
 
 def deployApp() {
