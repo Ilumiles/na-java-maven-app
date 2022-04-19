@@ -34,10 +34,10 @@ pipeline {
         stage("deploy") {
             steps {
                 script {
-                    def dockercmd =' docker run -d -p8080:8080
+                    def dockercmd ='docker run -d -p8080:8080 my-repo-app:a-1.0'
                     echo "deploying"
                     sshagent(['ec2-server']) {
-                            sh " ssh -o StrictHostKeyChecking=no ec2-user@107.23.166.103"
+                        sh " ssh -o StrictHostKeyChecking=no ec2-user@107.23.166.103 ${dockercmd}"
                         }
                     gv.deployApp()
                 }
